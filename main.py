@@ -14,6 +14,8 @@ class MyPlugin(Star):
     @filter.command("s")
     async def s(self, event: AstrMessageEvent):
         """获取 solarn0nbh 图像""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
+        user_name = event.get_sender_name()
+        message_str = event.message_str # 用户发的纯文本消息字符串
         message_chain = event.get_messages() # 用户所发的消息的消息链 # from astrbot.api.message_components import *
         logger.info(message_chain)
         yield event.image_result("https://www.hamqsl.com/solarn0nbh.php") # 发送图像。
@@ -21,6 +23,8 @@ class MyPlugin(Star):
     @filter.command("sp")
     async def sp(self, event: AstrMessageEvent):
         """获取 solarpic 图像""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
+        user_name = event.get_sender_name()
+        message_str = event.message_str # 用户发的纯文本消息字符串
         message_chain = event.get_messages() # 用户所发的消息的消息链 # from astrbot.api.message_components import *
         logger.info(message_chain)
         yield event.image_result("https://www.hamqsl.com/solarpic.php") # 发送图像。
@@ -28,6 +32,8 @@ class MyPlugin(Star):
     @filter.command("help")
     async def help(self, event: AstrMessageEvent):
         """获取帮助信息（YZYNetwork麦麦）""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
+        user_name = event.get_sender_name()
+        message_str = event.message_str # 用户发的纯文本消息字符串
         message_chain = event.get_messages() # 用户所发的消息的消息链 # from astrbot.api.message_components import *
         logger.info(message_chain)
         yield event.plain_result(f"YZYNetwork麦麦-菜单\n\n/s 获取太阳活动和传播情况图\n/sp 获取太阳活动图\n/weather 请用'/weather help'获取详细信息\n/status 获取YZYNetwork-BJ1服务器状态\n/抽取 随机抽取一位群成员\nEmojiMix：发送两个Emoji来触发。\n\n此外，您还可以和“麦麦”进行对话。")
