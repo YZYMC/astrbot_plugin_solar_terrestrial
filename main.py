@@ -13,12 +13,25 @@ class MyPlugin(Star):
     # 注册指令的装饰器。指令名为 helloworld。注册成功后，发送 `/helloworld` 就会触发这个指令，并回复 `你好, {user_name}!`
     @filter.command("s")
     async def s(self, event: AstrMessageEvent):
-        """这是一个 hello world 指令""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
-        user_name = event.get_sender_name()
-        message_str = event.message_str # 用户发的纯文本消息字符串
+        """获取 solarn0nbh 图像""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
         message_chain = event.get_messages() # 用户所发的消息的消息链 # from astrbot.api.message_components import *
         logger.info(message_chain)
         yield event.image_result("https://www.hamqsl.com/solarn0nbh.php") # 发送图像。
 
+    @filter.command("sp")
+    async def sp(self, event: AstrMessageEvent):
+        """获取 solarpic 图像""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
+        message_chain = event.get_messages() # 用户所发的消息的消息链 # from astrbot.api.message_components import *
+        logger.info(message_chain)
+        yield event.image_result("https://www.hamqsl.com/solarpic.php") # 发送图像。
+
+    @filter.command("help")
+    async def help(self, event: AstrMessageEvent):
+        """获取帮助信息（YZYNetwork麦麦）""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
+        message_chain = event.get_messages() # 用户所发的消息的消息链 # from astrbot.api.message_components import *
+        logger.info(message_chain)
+        yield event.plain_result(f"YZYNetwork麦麦-菜单\n\n/s 获取太阳活动和传播情况图\n/sp 获取太阳活动图\n/weather 请用'/weather help'获取详细信息\n/status 获取YZYNetwork-BJ1服务器状态\n/抽取 随机抽取一位群成员\nEmojiMix：发送两个Emoji来触发。\n\n此外，您还可以和“麦麦”进行对话。")
+
+    
     async def terminate(self):
         """可选择实现异步的插件销毁方法，当插件被卸载/停用时会调用。"""
