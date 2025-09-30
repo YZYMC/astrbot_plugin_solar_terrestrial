@@ -21,10 +21,25 @@ class MyPlugin(Star):
         """获取 solarpic 图像""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
         yield event.image_result("https://www.hamqsl.com/solarpic.php") # 发送图像。
 
+    @filter.command("ss")
+    async def ss(self, event: AstrMessageEvent):
+        """获取 solarsystem 图像""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
+        yield event.image_result("https://www.hamqsl.com/solarsystem.php") # 发送图像。
+
+    @filter.command("bs")
+    async def bs(self, event: AstrMessageEvent):
+        """获取 sun 图像""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
+        yield event.image_result("https://www.hamqsl.com/solarsun.php") # 发送图像。
+
+    @filter.command("muf")
+    async def muf(self, event: AstrMessageEvent):
+        """获取 MUF Map""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
+        yield event.image_result("https://prop.kc2g.com/renders/current/mufd-normal-now.svg") # 发送图像。
+    
     @filter.command("help")
     async def help(self, event: AstrMessageEvent):
         """获取帮助信息（YZYNetwork麦麦）""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
-        yield event.plain_result(f"YZYNetwork麦麦-菜单\n\n/s 获取太阳活动和传播情况图\n/sp 获取太阳活动图\n/weather 请用'/weather help'获取详细信息\n/status 获取YZYNetwork-BJ1服务器状态\n/抽取 随机抽取一位群成员\nEmojiMix：发送两个Emoji来触发。\n\n此外，您还可以和“麦麦”进行对话。")
+        yield event.plain_result(f"YZYNetwork麦麦-菜单\n\n/s 获取太阳活动和传播情况图\n/sp 获取太阳活动图\n/ss 获取星系图\n/bs 获取太阳图\n/muf 获取MUF地图\n/weather 请用'/weather help'获取详细信息\n/status 获取YZYNetwork-BJ1服务器状态\n/抽取 随机抽取一位群成员\nEmojiMix：发送两个Emoji来触发。\n\n此外，您还可以和“麦麦”进行对话。")
 
     
     async def terminate(self):
