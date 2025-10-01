@@ -1,6 +1,7 @@
 from astrbot.api.event import filter, AstrMessageEvent, MessageEventResult
 from astrbot.api.star import Context, Star, register
 from astrbot.api import logger
+import cairosvg
 
 @register("astrbot_plugin_solar_terrestrial", "yzymc", "一个简单的插件，可以提供太阳活动和传播状态等信息。", "2.1.0")
 class MyPlugin(Star):
