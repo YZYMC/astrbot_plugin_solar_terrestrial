@@ -2,7 +2,7 @@ from astrbot.api.event import filter, AstrMessageEvent, MessageEventResult
 from astrbot.api.star import Context, Star, register
 from astrbot.api import logger
 
-@register("astrbot_plugin_solar_terrestrial", "yzymc", "一个简单的插件，可以提供太阳活动和传播状态等信息。", "2.0.2")
+@register("astrbot_plugin_solar_terrestrial", "yzymc", "一个简单的插件，可以提供太阳活动和传播状态等信息。", "2.1.0")
 class MyPlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
@@ -34,7 +34,15 @@ class MyPlugin(Star):
     @filter.command("muf")
     async def muf(self, event: AstrMessageEvent):
         """获取 MUF Map""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
-        yield event.image_result("https://prop.kc2g.com/renders/current/mufd-normal-now.svg") # 发送图像。
+        import cairosvg
+
+        # 转换为PNG
+        cairosvg.svg2png(
+            url="https://prop.kc2g.com/renders/current/mufd-normal-now.svg",
+            write_to="muf.png"
+        )
+        
+        yield event.image_result("muf.png") # 发送图像。
     
     @filter.command("help")
     async def help(self, event: AstrMessageEvent):
