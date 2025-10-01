@@ -1,9 +1,6 @@
-# helloworld
+# astr_Solar_terrestrial
 
-AstrBot 插件模板
-
-A template plugin for AstrBot plugin feature
+AstrBot 插件：获取太阳活动和传播情况以及一个help
 
 # 支持
-
-[帮助文档](https://astrbot.app)
+NOTHING
